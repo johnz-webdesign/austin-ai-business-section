@@ -10,11 +10,14 @@
             --primary-color: #2d3e50;
             --secondary-color: #3498db;
             --accent-color: #1abc9c;
+            --accent-rgb: 26, 188, 156;
+            --saas-color: #8e44ad;
+            --saas-rgb: 142, 68, 173;
+            --austin-color: #16a085;
+            --austin-rgb: 22, 160, 133;
             --light-bg: #ecf0f1;
             --white: #ffffff;
             --gray: #7f8c8d;
-            --saas-color: #8e44ad;
-            --austin-color: #16a085;
             --transition: all 0.3s ease;
         }
 
@@ -204,100 +207,318 @@
             }
         }
 
-        /* Enhanced card styling */
+        /* Enhanced card styling with glass morphism */
         .card {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 18px;
+            padding: 32px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
             height: 100%;
             animation: fadeIn 0.5s ease-out forwards;
             opacity: 0;
             border-top: 4px solid transparent;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Add cool hover effect with gradient border */
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            pointer-events: none;
-            background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .card:hover::after {
-            opacity: 1;
-        }
-
-        /* Add a subtle shimmer effect for extra visual interest */
-        @keyframes shimmer {
-            0% {
-                background-position: -100% 0;
-            }
-
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        .card-item h4 .diamond-icon {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-item h4 .diamond-icon::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.8) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite;
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-
-        .card:hover .card-item h4 .diamond-icon::after {
-            opacity: 1;
-        }
-
-        /* Add subtle texture for cards */
-        .card {
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            cursor: default;
+            will-change: transform, box-shadow;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+            user-select: text;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f0f0f0' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        .card::before {
+        /* Lighting effect */
+        .card .lighting {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 180px;
-            height: 80px;
-            background: radial-gradient(circle at top right, rgba(230, 230, 230, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
+            top: -150px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            will-change: transform, opacity;
         }
 
+        .card:hover .lighting {
+            opacity: 0.8;
+            transform: translateY(50px) translateX(80px);
+        }
+
+        /* Arrow indicator */
+        .card .arrow-indicator {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231abc9c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+            z-index: 3;
+        }
+
+        .saas-view .card .arrow-indicator {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e44ad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+
+        .austin-view .card .arrow-indicator {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+
+        .card:hover .arrow-indicator {
+            opacity: 0.7;
+            transform: translateX(0);
+        }
+
+        /* Enhanced hover effects */
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 20px rgba(var(--accent-rgb), 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+        }
+
+        .card:hover::before {
+            opacity: 0.8;
+            transform: translateY(50px) translateX(80px);
+        }
+
+        .card:hover::after {
+            opacity: 0.7;
+            transform: translateX(0);
+        }
+
+        /* Add RGB values for glow effects */
+        :root {
+            --primary-color: #2d3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --accent-rgb: 26, 188, 156;
+            --saas-color: #8e44ad;
+            --saas-rgb: 142, 68, 173;
+            --austin-color: #16a085;
+            --austin-rgb: 22, 160, 133;
+            --light-bg: #ecf0f1;
+            --white: #ffffff;
+            --gray: #7f8c8d;
+            --transition: all 0.3s ease;
+        }
+
+        /* Company-specific glows */
+        .saas-view .card:hover {
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 20px rgba(var(--saas-rgb), 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+        }
+
+        .austin-view .card:hover {
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 20px rgba(var(--austin-rgb), 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+        }
+
+        /* Animated floating decorative elements */
+        .card .decorator {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.4;
+            filter: blur(1px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        .card .decorator:nth-child(1) {
+            top: 20px;
+            right: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 70%);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .card .decorator:nth-child(2) {
+            bottom: 30px;
+            left: 15px;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 70%);
+            animation: float 3s ease-in-out infinite 1s;
+        }
+
+        .saas-view .card .decorator {
+            background: radial-gradient(circle at center, var(--saas-color) 0%, transparent 70%);
+        }
+
+        .austin-view .card .decorator {
+            background: radial-gradient(circle at center, var(--austin-color) 0%, transparent 70%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        .card:hover .decorator {
+            opacity: 0.7;
+            filter: blur(0);
+        }
+
+        /* Enhanced title styling */
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            user-select: text;
+            cursor: text;
+        }
+
+        .card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--accent-color) 50%,
+                    transparent 100%);
+            transition: width 0.5s ease, opacity 0.5s ease;
+            border-radius: 3px;
+        }
+
+        .card:hover h3 {
+            transform: translateZ(15px);
+            text-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover h3::after {
+            width: 120px;
+            opacity: 0.8;
+        }
+
+        /* Enhanced content styling */
+        .card-content {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            transform-style: preserve-3d;
+            user-select: text;
+            cursor: text;
+        }
+
+        .card-item {
+            margin-bottom: 25px;
+            position: relative;
+            transition: transform 0.3s ease;
+            user-select: text;
+            cursor: text;
+        }
+
+        .card:hover .card-item {
+            transform: translateZ(5px);
+        }
+
+        .card-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease, color 0.3s ease;
+            user-select: text;
+            cursor: text;
+        }
+
+        .card-item:hover h4 {
+            transform: translateX(5px);
+            color: var(--accent-color);
+        }
+
+        .saas-view .card-item:hover h4 {
+            color: var(--saas-color);
+        }
+
+        .austin-view .card-item:hover h4 {
+            color: var(--austin-color);
+        }
+
+        /* Enhanced icon styling */
+        .diamond-icon {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            transform: rotate(45deg);
+            margin-right: 12px;
+            flex-shrink: 0;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 rgba(var(--accent-rgb), 0);
+            user-select: text;
+            cursor: text;
+        }
+
+        .card-item:hover .diamond-icon {
+            transform: rotate(45deg) scale(1.2);
+            box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
+        }
+
+        /* Add decorative elements to card */
+        .card-item {
+            position: relative;
+        }
+
+        .card-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(var(--accent-rgb), 0.1) 50%,
+                    transparent 100%);
         }
 
         .saas-view .card {
@@ -365,6 +586,43 @@
             color: var(--gray);
             line-height: 1.6;
             font-size: 1.05rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 2px;
+            user-select: text;
+            cursor: text;
+            z-index: 5;
+        }
+
+        .card-item:hover p {
+            color: #555;
+        }
+
+        .card-item p::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            background-color: rgba(var(--accent-rgb), 0.08);
+            z-index: -1;
+            transition: width 0.4s ease, height 0.4s ease;
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
+        .saas-view .card-item p::before {
+            background-color: rgba(var(--saas-rgb), 0.08);
+        }
+
+        .austin-view .card-item p::before {
+            background-color: rgba(var(--austin-rgb), 0.08);
+        }
+
+        .card-item:hover p::before {
+            width: 100%;
+            height: 100%;
         }
 
         .diamond-icon {
@@ -664,6 +922,296 @@
         .comparison-table tbody tr:hover .austin-indicator {
             animation: fadeUp 0.3s ease forwards;
         }
+
+        /* Add focus styles for keyboard navigation (accessibility) */
+        .toggle-btn:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Enhance tab focus visual indicator for better accessibility */
+        .card:focus-visible {
+            outline: 2px dashed var(--accent-color);
+            outline-offset: 4px;
+        }
+
+        /* Add print styles for better printing */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .view-toggle,
+            .compare-text {
+                display: none;
+            }
+
+            .header::after {
+                display: none;
+            }
+        }
+
+        /* Optimize animations for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            .card,
+            .toggle-btn,
+            .header h1 span,
+            .card:hover,
+            .card h3::after,
+            .card:hover h3::after,
+            .diamond-icon::after,
+            body::before {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* Add subtle loading animation */
+        .company-content {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Smooth transitions when switching views */
+        .saas-view,
+        .austin-view {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .saas-view[style*="display: none"],
+        .austin-view[style*="display: none"] {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Add subtle parallax effect on scroll */
+        @media (min-width: 768px) {
+            .card {
+                transform-style: preserve-3d;
+                will-change: transform;
+            }
+
+            .parallax-wrapper {
+                transform-style: preserve-3d;
+                perspective: 1000px;
+            }
+        }
+
+        /* Add light-colored text selection */
+        ::selection {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Add custom scrollbar for WebKit browsers */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Page load performance optimization */
+        html {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 5000px;
+        }
+
+        /* Add smooth tap highlight for mobile */
+        @media (hover: none) {
+            .card:active {
+                background-color: rgba(var(--accent-color), 0.05);
+            }
+        }
+
+        /* Custom link color within cards for better readability */
+        .card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .saas-view .card a {
+            color: var(--saas-color);
+        }
+
+        .austin-view .card a {
+            color: var(--austin-color);
+        }
+
+        .card a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .card a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Add custom cursor styling for cards but allow text selection */
+        .card {
+            cursor: default;
+            will-change: transform, box-shadow;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
+            user-select: text;
+        }
+
+        /* Make sure text content is selectable */
+        .card-content,
+        .card-item,
+        .card-item h4,
+        .card-item p {
+            user-select: text;
+            cursor: text;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Make sure decorative elements don't interfere with text selection */
+        .card .decorator,
+        .card .lighting,
+        .card .arrow-indicator {
+            pointer-events: none;
+        }
+
+        /* Fix highlighting behavior */
+        .card-item p::before {
+            pointer-events: none;
+        }
+
+        /* Ensure title is selectable */
+        .card h3 {
+            user-select: text;
+            cursor: text;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Allow clicking links within cards */
+        .card a {
+            cursor: pointer;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Make sure animated effects don't interfere with selection */
+        .card::before,
+        .card::after {
+            pointer-events: none;
+        }
+
+        /* Add animated CTA arrow for each card */
+        .card::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231abc9c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .saas-view .card::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e44ad' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+
+        .austin-view .card::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+        }
+
+        .card:hover::after {
+            opacity: 0.7;
+            transform: translateX(0);
+        }
+
+        /* Add lighting effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            will-change: transform, opacity;
+        }
+
+        .card:hover::before {
+            opacity: 0.8;
+            transform: translateY(50px) translateX(80px);
+        }
+
+        /* Improve card animation performance */
+        @media (prefers-reduced-motion: no-preference) {
+            .card {
+                transform: translateZ(0);
+                will-change: transform, box-shadow;
+            }
+
+            .card-content,
+            .card h3,
+            .card h4,
+            .card p {
+                will-change: transform;
+                transform: translateZ(0);
+            }
+        }
+
+        /* Add visually hidden class for screen readers */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
     </style>
 </head>
 
@@ -684,96 +1232,128 @@
         <div class="company-content">
             <!-- AI SaaS View -->
             <div class="saas-view" style="display: none;">
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Locked Approach</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Tied to proprietary platforms, rigid standards, and closed ecosystems—limiting your
-                                    choices.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>You're locked into their ecosystem, making it difficult and expensive to adapt to
-                                    your changing needs.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Endless Fees</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Large, inefficient organizations with high overhead costs passed on to you through
-                                    endless fees.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Unpredictable costs that grow as your usage increases, making it difficult to budget
-                                    for AI initiatives.</p>
+                <div class="parallax-wrapper">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Locked Approach</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Tied to proprietary platforms, rigid standards, and closed ecosystems—limiting
+                                        your
+                                        choices.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>You're locked into their ecosystem, making it difficult and expensive to adapt to
+                                        your changing needs.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Sales-Driven Priorities</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Their priority? Selling more licenses.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>You're just another sale. Your success is secondary to their revenue goals and
-                                    shareholder expectations.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Endless Fees</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Large, inefficient organizations with high overhead costs passed on to you
+                                        through
+                                        endless fees.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Unpredictable costs that grow as your usage increases, making it difficult to
+                                        budget
+                                        for AI initiatives.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Experimental Focus</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Focus on making models, running experiments, and producing data—but not solving
-                                    problems.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Impressive demos that fail to translate into meaningful business outcomes or ROI.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Sales-Driven Priorities</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Their priority? Selling more licenses.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>You're just another sale. Your success is secondary to their revenue goals and
+                                        shareholder expectations.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Bloated Teams</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Large, inefficient teams that inflate costs and delay ROI.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Slow progress, complex implementation cycles, and too many people involved but no one
-                                    owning your success.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Experimental Focus</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Focus on making models, running experiments, and producing data—but not solving
+                                        problems.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Impressive demos that fail to translate into meaningful business outcomes or ROI.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Generic Solutions</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Generic solutions that aren't tailored to your specific industry challenges or
-                                    business needs.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Bloated Teams</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Large, inefficient teams that inflate costs and delay ROI.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Slow progress, complex implementation cycles, and too many people involved but no
+                                        one
+                                        owning your success.</p>
+                                </div>
                             </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>You're forced to adapt your business to their AI, rather than having AI that adapts
-                                    to your business.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Generic Solutions</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Generic solutions that aren't tailored to your specific industry challenges or
+                                        business needs.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>You're forced to adapt your business to their AI, rather than having AI that
+                                        adapts
+                                        to your business.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -782,99 +1362,131 @@
 
             <!-- Austin AI View -->
             <div class="austin-view">
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Limitless Approach</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>No vendor lock-in. We select the best tools and technologies for your business,
-                                    without bias.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Freedom to adapt, scale, and evolve your AI systems as your business needs change and
-                                    grow.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Cost-Efficient AI</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Transparent, predictable pricing with a focus on delivering cost-efficient AI
-                                    solutions that maximize ROI.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Clear visibility into costs and a partner who's incentivized to ensure you get
-                                    maximum value from your investment.</p>
+                <div class="parallax-wrapper">
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Limitless Approach</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>No vendor lock-in. We select the best tools and technologies for your business,
+                                        without bias.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Freedom to adapt, scale, and evolve your AI systems as your business needs change
+                                        and
+                                        grow.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Client-Driven Focus</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Our priority? Understanding your unique challenges and building AI that truly works
-                                    for you.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>AI solutions that align with your business objectives and address your most pressing
-                                    challenges first.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Cost-Efficient AI</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Transparent, predictable pricing with a focus on delivering cost-efficient AI
+                                        solutions that maximize ROI.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Clear visibility into costs and a partner who's incentivized to ensure you get
+                                        maximum value from your investment.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Real-World Impact</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Strategic, problem-first thinking that drives real business outcomes, not just
-                                    numbers.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>AI that solves real problems with measurable impact on your bottom line, efficiency,
-                                    and competitive advantage.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Client-Driven Focus</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Our priority? Understanding your unique challenges and building AI that truly
+                                        works
+                                        for you.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>AI solutions that align with your business objectives and address your most
+                                        pressing
+                                        challenges first.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Elite Teams</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Lean, highly skilled teams of data scientists and engineers who deliver results—not
-                                    overhead.</p>
-                            </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>Faster implementation, more efficient processes, and direct access to experts who can
-                                    solve your problems.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Real-World Impact</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Strategic, problem-first thinking that drives real business outcomes, not just
+                                        numbers.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>AI that solves real problems with measurable impact on your bottom line,
+                                        efficiency,
+                                        and competitive advantage.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <h3>Tailored Solutions</h3>
-                        <div class="card-content">
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What You Get</h4>
-                                <p>Custom AI solutions designed specifically for your business goals and industry
-                                    requirements.</p>
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Elite Teams</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Lean, highly skilled teams of data scientists and engineers who deliver
+                                        results—not
+                                        overhead.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>Faster implementation, more efficient processes, and direct access to experts who
+                                        can
+                                        solve your problems.</p>
+                                </div>
                             </div>
-                            <div class="card-item">
-                                <h4><span class="diamond-icon"></span> What It Means For You</h4>
-                                <p>AI that fits your business perfectly, addressing your unique challenges and
-                                    leveraging your specific opportunities.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="decorator"></div>
+                            <div class="decorator"></div>
+                            <div class="lighting"></div>
+                            <div class="arrow-indicator"></div>
+                            <h3>Tailored Solutions</h3>
+                            <div class="card-content">
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What You Get</h4>
+                                    <p>Custom AI solutions designed specifically for your business goals and industry
+                                        requirements.</p>
+                                </div>
+                                <div class="card-item">
+                                    <h4><span class="diamond-icon"></span> What It Means For You</h4>
+                                    <p>AI that fits your business perfectly, addressing your unique challenges and
+                                        leveraging your specific opportunities.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -889,6 +1501,56 @@
             const saasView = document.querySelector('.saas-view');
             const austinView = document.querySelector('.austin-view');
 
+            // Initialize parallax effect
+            if (window.innerWidth >= 768) {
+                initParallax();
+            }
+
+            // Handle window resize for parallax
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) {
+                    initParallax();
+                } else {
+                    removeParallax();
+                }
+            });
+
+            // Add keyboard shortcuts (1 for Austin AI, 2 for SaaS)
+            document.addEventListener('keydown', function (e) {
+                // Only respond if not in a form field
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
+                    if (e.key === '1') {
+                        document.querySelector('.toggle-btn[data-view="austin"]').click();
+                    } else if (e.key === '2') {
+                        document.querySelector('.toggle-btn[data-view="saas"]').click();
+                    }
+                }
+            });
+
+            // Add swipe gesture support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', function (e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            document.addEventListener('touchend', function (e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 100;
+                if (touchEndX + swipeThreshold < touchStartX) {
+                    // Swipe left - go to SaaS
+                    document.querySelector('.toggle-btn[data-view="saas"]').click();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - go to Austin AI
+                    document.querySelector('.toggle-btn[data-view="austin"]').click();
+                }
+            }
+
             toggleBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
                     const view = this.getAttribute('data-view');
@@ -897,40 +1559,85 @@
                     toggleBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Toggle view with smooth transition
+                    // Smoother view switching
                     if (view === 'saas') {
-                        austinView.classList.add('hidden');
+                        // Start fade out
+                        austinView.style.opacity = '0';
+                        austinView.style.transform = 'translateY(20px)';
+
+                        // After fade out completes
                         setTimeout(() => {
                             austinView.style.display = 'none';
                             saasView.style.display = 'block';
-                            setTimeout(() => {
-                                saasView.classList.remove('hidden');
-                            }, 50);
-                        }, 400);
+
+                            // Force reflow
+                            void saasView.offsetWidth;
+
+                            // Start fade in
+                            saasView.style.opacity = '1';
+                            saasView.style.transform = 'translateY(0)';
+                        }, 300);
                     } else {
-                        saasView.classList.add('hidden');
+                        // Start fade out
+                        saasView.style.opacity = '0';
+                        saasView.style.transform = 'translateY(20px)';
+
+                        // After fade out completes
                         setTimeout(() => {
                             saasView.style.display = 'none';
                             austinView.style.display = 'block';
-                            setTimeout(() => {
-                                austinView.classList.remove('hidden');
-                            }, 50);
-                        }, 400);
+
+                            // Force reflow
+                            void austinView.offsetWidth;
+
+                            // Start fade in
+                            austinView.style.opacity = '1';
+                            austinView.style.transform = 'translateY(0)';
+                        }, 300);
                     }
                 });
             });
 
-            // Initialize cards animation reset when tab is switched
-            toggleBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const cards = document.querySelectorAll('.card');
-                    cards.forEach(card => {
-                        card.style.opacity = '0';
-                        void card.offsetWidth; // Trigger reflow to restart animation
-                        card.style.opacity = '';
-                    });
+            // Parallax effect functions
+            function initParallax() {
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', handleParallax);
+                    card.addEventListener('mouseleave', resetParallax);
                 });
-            });
+            }
+
+            function removeParallax() {
+                const cards = document.querySelectorAll('.card');
+
+                cards.forEach(card => {
+                    card.removeEventListener('mousemove', handleParallax);
+                    card.removeEventListener('mouseleave', resetParallax);
+                    card.style.transform = '';
+                });
+            }
+
+            function handleParallax(e) {
+                const card = this;
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                // Calculate distance from center in percentage (-50 to 50)
+                const rotateY = ((mouseX - centerX) / (rect.width / 2)) * 2;
+                const rotateX = -((mouseY - centerY) / (rect.height / 2)) * 2;
+
+                // Apply subtle rotation and translation
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            }
+
+            function resetParallax() {
+                // Reset to normal state with smooth transition
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            }
         });
     </script>
 </body>
