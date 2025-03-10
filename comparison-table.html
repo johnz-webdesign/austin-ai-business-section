@@ -1420,6 +1420,290 @@
                 padding: 20px;
             }
         }
+
+        /* AI Stack Components - New Styling */
+        .ai-stack-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .changes-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 5px 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .marginal-cost-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e4b7a' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .cost-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .marginal-cost-heading {
+            color: #1e4b7a;
+            font-size: 2.2rem;
+            margin: 0;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .zero-heading {
+            color: #1e4b7a;
+            font-size: 1.8rem;
+            margin: 0;
+            text-align: center;
+            font-weight: normal;
+            letter-spacing: -0.3px;
+        }
+
+        .zero-text {
+            font-weight: 700;
+            position: relative;
+            color: #1e4b7a;
+            animation: zero-glow 1.5s ease-in-out infinite alternate;
+        }
+
+        .cost-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(30, 75, 122, 0.5), transparent);
+            margin: 30px auto;
+        }
+
+        .cost-description {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #1e4b7a;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(30, 75, 122, 0.3);
+        }
+
+        .stack-components {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .stack-btn {
+            padding: 12px 15px;
+            background-color: #f1f5f9;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            min-width: 120px;
+            line-height: 1.3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stack-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .stack-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .stack-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #e6ebf2;
+        }
+
+        .library-btn,
+        .deployment-btn {
+            background-color: #1d9eb5;
+            color: white;
+        }
+
+        .library-btn:hover,
+        .deployment-btn:hover {
+            background-color: #198fa3;
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .stack-components {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .stack-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .marginal-cost-heading {
+                font-size: 1.8rem;
+            }
+
+            .zero-heading {
+                font-size: 1.5rem;
+            }
+
+            .cost-description {
+                font-size: 1rem;
+            }
+
+            .marginal-cost-section {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Additional animations for stack components */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .marginal-cost-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .marginal-cost-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stack-btn {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .stack-btn.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Additional glow effect for the zero text */
+        .zero-text {
+            display: inline-block;
+            position: relative;
+        }
+
+        .zero-text::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(30, 75, 122, 0.4) 0%, rgba(30, 75, 122, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0.7;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                width: 100%;
+                height: 100%;
+                opacity: 0.3;
+            }
+
+            100% {
+                width: 200%;
+                height: 200%;
+                opacity: 0.7;
+            }
+        }
     </style>
 </head>
 
@@ -1704,94 +1988,36 @@
     </div>
 
     <!-- AI Stack Components Section -->
-    <div class="container" style="margin-top: 80px;">
-        <div class="stack-components-section">
-            <div class="components-grid">
-                <div class="component-card light-bg">
-                    <div class="component-icon dark">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#555555" />
-                        </svg>
-                    </div>
-                    <h3>Databases</h3>
-                </div>
+    <div class="container ai-stack-container" style="margin-top: 80px;">
+        <!-- Yellow Changes Label -->
+        <div class="changes-label">Changes</div>
 
-                <div class="component-card teal-bg">
-                    <div class="component-icon light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                        </svg>
-                    </div>
-                    <h3>Data Science Libraries</h3>
-                </div>
+        <div class="marginal-cost-section">
+            <div class="pattern-overlay"></div>
+            <div class="cost-content">
+                <h2 class="marginal-cost-heading">The Marginal Cost of the Ai Stack...</h2>
+                <h3 class="zero-heading">...is Headed to <span class="zero-text">Zero</span>!</h3>
 
-                <div class="component-card light-bg">
-                    <div class="component-icon dark">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#555555" />
-                        </svg>
-                    </div>
-                    <h3>Servers, Middleware</h3>
-                </div>
+                <div class="cost-divider"></div>
 
-                <div class="component-card teal-bg">
-                    <div class="component-icon light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                        </svg>
-                    </div>
-                    <h3>Deployment/ Orchestration</h3>
-                </div>
-
-                <div class="component-card light-bg">
-                    <div class="component-icon dark">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#555555" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#555555" />
-                        </svg>
-                    </div>
-                    <h3>AI Tools of All Kind</h3>
-                </div>
-
-                <div class="component-card teal-bg">
-                    <div class="component-icon light">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="4" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="4" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                            <rect x="13" y="13" width="7" height="7" rx="1" fill="#f7d060" />
-                        </svg>
-                    </div>
-                    <h3>Large Language Models (LLMs)</h3>
-                </div>
-            </div>
-
-            <div class="cost-message-card">
-                <div class="cost-tag">Low Cost</div>
-                <h2 class="cost-heading">The Marginal Cost of the AI Stack...</h2>
-                <h3 class="cost-subheading">...is Headed to <span class="zero-text">Zero</span>!</h3>
-                <div class="divider"></div>
-                <p class="cost-text">
-                    Almost all components of the AI stack are either
-                    <strong>open-source</strong> or available for <strong>low cost</strong> in the cloud.
+                <p class="cost-description">
+                    Almost every part of the AI stack is open-source or available at low cost in the
+                    cloud. So why pour big $$$$ into overpriced, marked-up solutions? Instead,
+                    invest in your own IP, build <span class="highlight">real competitive advantage</span>, and propel
+                    your
+                    business forward—on your terms.
                 </p>
-                <p class="cost-question">
-                    <a href="#" class="cost-link">Why pay big $$$$ and markups for them?</a>
-                </p>
+
+                <div class="stack-components">
+                    <button class="stack-btn"><span class="btn-text">Databases</span></button>
+                    <button class="stack-btn library-btn"><span class="btn-text">Data
+                            Science<br>Libraries</span></button>
+                    <button class="stack-btn"><span class="btn-text">Servers,<br>Middleware</span></button>
+                    <button class="stack-btn deployment-btn"><span
+                            class="btn-text">Deployment/<br>Orchestration</span></button>
+                    <button class="stack-btn"><span class="btn-text">AI Tools</span></button>
+                    <button class="stack-btn"><span class="btn-text">LLMs</span></button>
+                </div>
             </div>
         </div>
     </div>
@@ -1801,6 +2027,28 @@
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const saasView = document.querySelector('.saas-view');
             const austinView = document.querySelector('.austin-view');
+            const stackBtns = document.querySelectorAll('.stack-btn');
+
+            // Add hover animation for stack buttons
+            stackBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+                });
+
+                btn.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+
+                btn.addEventListener('click', function () {
+                    // Add a slight pulse effect when clicked
+                    this.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 500);
+                });
+            });
 
             // Initialize parallax effect
             if (window.innerWidth >= 768) {
@@ -1939,6 +2187,18 @@
                 // Reset to normal state with smooth transition
                 this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
             }
+
+            // Add subtle animation on page load for the AI Stack section
+            setTimeout(() => {
+                document.querySelector('.marginal-cost-section').classList.add('fade-in');
+
+                // Staggered animation for buttons
+                stackBtns.forEach((btn, index) => {
+                    setTimeout(() => {
+                        btn.classList.add('fade-in');
+                    }, 100 * index);
+                });
+            }, 300);
         });
     </script>
 </body>
