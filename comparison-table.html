@@ -852,14 +852,14 @@
             transform: scaleY(1);
         }
 
-        /* Add a subtle pulse effect to the toggle buttons */
+        /* Add a subtle pulse effect to the toggle buttons - ENHANCED */
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(44, 156, 200, 0.4);
+                box-shadow: 0 0 0 0 rgba(44, 156, 200, 0.5);
             }
 
             70% {
-                box-shadow: 0 0 0 10px rgba(44, 156, 200, 0);
+                box-shadow: 0 0 0 12px rgba(44, 156, 200, 0);
             }
 
             100% {
@@ -876,10 +876,41 @@
         /* Update the toggle button active styles for each company */
         .toggle-btn.active[data-view="saas"] {
             background-color: var(--saas-color);
+            animation: pulse-saas 1.5s infinite;
         }
 
         .toggle-btn.active[data-view="austin"] {
             background-color: var(--austin-color);
+            animation: pulse-austin 1.5s infinite;
+        }
+
+        /* Company-specific pulse animations */
+        @keyframes pulse-saas {
+            0% {
+                box-shadow: 0 0 0 0 rgba(142, 68, 173, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(142, 68, 173, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(142, 68, 173, 0);
+            }
+        }
+
+        @keyframes pulse-austin {
+            0% {
+                box-shadow: 0 0 0 0 rgba(22, 160, 133, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(22, 160, 133, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(22, 160, 133, 0);
+            }
         }
 
         /* Update table header colors */
